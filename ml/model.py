@@ -118,7 +118,6 @@ def performance_on_categorical_slice(
     fbeta : float
 
     """
-    # TODO: implement the function
     X_slice, y_slice, _, _ = process_data(
         data,
         categorical_features=categorical_features,
