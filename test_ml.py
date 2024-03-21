@@ -1,28 +1,28 @@
 import pytest
-# TODO: add necessary import
 
-# TODO: implement the first test. Change the function name and input as needed
-def test_one():
-    """
-    # add description for the first test
-    """
-    # Your code here
-    pass
+from sklearn.ensemble import AdaBoostClassifier
+
+from train_model import data, y_test, preds, model
+from ml.model import compute_model_metrics
 
 
-# TODO: implement the second test. Change the function name and input as needed
-def test_two():
+def test_precision():
     """
-    # add description for the second test
+    Test if precision is at or above acceptable threshold: 0.5
     """
-    # Your code here
-    pass
+    precision, _, _ = compute_model_metrics(y_test, preds)
+    assert precision >= 0.5
 
 
-# TODO: implement the third test. Change the function name and input as needed
-def test_three():
+def test_data_shape():
     """
-    # add description for the third test
+    Test to ensure data has no null values
     """
-    # Your code here
-    pass
+    assert data.shape == data.dropna().shape
+
+
+def test_model_algorithm():
+    """
+    Test to ensure model is expected algorithm
+    """
+    assert isinstance(model, AdaBoostClassifier)
